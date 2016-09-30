@@ -1,7 +1,6 @@
 import os
 import sys
 import json
-import openssl
 import requests
 from flask import Flask, request
 
