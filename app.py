@@ -29,7 +29,8 @@ def webhook():
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
     if data["object"] == "page":
-        for messaging_event  in data["entry"][0]["messaging"]:
+        for entry in data["entry"]:
+            for messaging_event in entry["messaging"]:
                 if messaging_event.get("message"):  # someone sent us a message
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
@@ -44,7 +45,7 @@ def webhook():
                     elif message_text == "undecided" or "not sure":
                         send_message(sender_id, "then trust me and vote hillary")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                        
+ 
                     elif message_text == "hi" or "hello" or "HELLO" or "HI" or "hi!" or "hey" or "HEY" or "Hey" or "Hi":
                         send_message(sender_id, "Wassup! Ready for election news? trump, hillary or undecided?")
                     else:
