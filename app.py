@@ -35,22 +35,19 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]
-                    if message_text == "trump" or "Trump" or "TRUMP":
+                    if message_text == "trump":
                         send_message(sender_id, "seriously, trump???")
                         send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
-                    elif message_text == "hillary" or "Hillary" or "HILLARY" or "hilary" or "Hilary" or "HILARY":
+                    elif message_text == "hillary":
                         send_message(sender_id, "hillary not too bad ")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                     
-                    elif message_text == "undecided" or "not sure":
+                    elif message_text == "undecided":
                         send_message(sender_id, "then trust me and vote hillary")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
- 
-                    elif message_text == "hi" or "hello" or "HELLO" or "HI" or "hi!" or "hey" or "HEY" or "Hey" or "Hi":
+                    else :
                         send_message(sender_id, "Wassup! Ready for election news? trump, hillary or undecided?")
-                    else:
-                        send_message(sender_id , "please type correctly, can't you read!")
-                        break          
+                       
         
 
                 if messaging_event.get("delivery"):  # delivery confirmation
