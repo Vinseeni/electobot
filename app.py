@@ -23,6 +23,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
 
+
     # endpoint for processing incoming messaging events
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
@@ -33,20 +34,22 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]
-                    if message_text == "trump":
-                        send_message(sender_id, "trump sucks yo ")
+                    if message_text == "trump" or "Trump" or "TRUMP":
+                        send_message(sender_id, "")
                         send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
                         break
-                    elif message_text == "hillary":
+                    elif message_text == "hillary" or "Hillary" or "HILLARY" or "hilary" or "Hilary" or "HILARY":
                         send_message(sender_id, "hillary not too bad ")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                         break
-                    elif message_text == "undecided":
+                    elif message_text == "undecided" or "not sure":
                         send_message(sender_id, "then trust me and vote hillary")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                         break
-                    else:
+                    elif message_text   == "hi" or "hello" or "HELLO" or "HI" or "hi!" or "hey" or "HEY"
                         send_message(sender_id, "Wassup! Ready for election news? trump, hillary or undecided?")
+                    else:
+                        send_message(sender_id , "please type correctly, can't you read!")
                         break          
         
 
