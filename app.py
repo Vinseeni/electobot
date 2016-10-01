@@ -35,7 +35,7 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]
-                    if message_text.lower() in {"trump","Trump","TRUMP"}:
+                    if "trump" in message_text.lower():
                         send_message(sender_id, "seriously, trump???")
                         send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
                     elif message_text.lower() in {"hillary","Hillary","HILLARY","hilary", "Hilary","HILARY"}:
@@ -49,7 +49,7 @@ def webhook():
                     else:
                         send_message(sender_id, "Hey, wanna read another cool article?")
                         send_message(send_id, "http://www.independent.co.uk/news/world/americas/us-elections/usa-today-breaks-non-endorsement-tradition-by-saying-donald-trump-is-unfit-for-the-presidency-a7339226.html")
-                        break
+                    pass
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
