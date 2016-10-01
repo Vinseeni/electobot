@@ -46,7 +46,7 @@ def webhook():
                         send_message(sender_id, "then trust me and vote hillary")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                         break
-                    elif message_text   == "hi" or "hello" or "HELLO" or "HI" or "hi!" or "hey" or "HEY"
+                    elif message_text   == "hi" or "hello" or "HELLO" or "HI" or "hi!" or "hey" or "HEY" or "Hey" or "Hi":
                         send_message(sender_id, "Wassup! Ready for election news? trump, hillary or undecided?")
                     else:
                         send_message(sender_id , "please type correctly, can't you read!")
