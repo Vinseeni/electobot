@@ -39,13 +39,13 @@ def webhook():
                         send_message(sender_id, "seriously, trump???")
                         send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
                     elif "hillary" in message_text.lower():
-                        send_message(sender_id, "Hillary isnt too bad ")
+                        send_message(sender_id, "Hillary isnt too bad to be honest ")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                     elif "undecided" in message_text.lower():
-                        send_message(sender_id, "then trust me and vote hillary")
+                        send_message(sender_id, "Then trust me and vote hillary! Here's the latest news about hillary")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                     else :
-                        send_message(sender_id, "Wassup! Ready for election news? trump, hillary or undecided?")
+                        send_message(sender_id, "Wassup! I've got election news just for you! Who is your pick: trump, hillary or undecided?")
                     # else:
                     #     send_message(sender_id, "Hey, wanna read another cool article?")
                     #     send_message(send_id, "http://www.independent.co.uk/news/world/americas/us-elections/usa-today-breaks-non-endorsement-tradition-by-saying-donald-trump-is-unfit-for-the-presidency-a7339226.html")
