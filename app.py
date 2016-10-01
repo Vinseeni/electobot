@@ -44,7 +44,7 @@ def webhook():
                         # recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         # message_text = messaging_event["message"]["text"]  # the message's text
                         send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
-                        pass
+                        break
                     elif message_text == "hillary":
                               # the message's text
                         send_message(sender_id, "hillary not too bad ")
@@ -52,7 +52,7 @@ def webhook():
                         # recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         # message_text = messaging_event["message"]["text"]  # the message's text
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                        pass
+                        break
                     elif message_text == "undecided":
                         send_message(sender_id, "then trust me and vote hillary")
                         # sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
@@ -60,14 +60,14 @@ def webhook():
                         # message_text = messaging_event["message"]["text"]  # the message's text
                         
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                        pass
+                        break
                     else:
                         send_message(sender_id, "Wassup! Ready for election news? trump, hillary or undecided?")
                         # sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         # recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         # message_text = messaging_event["message"]["text"]  # the message's text
                         # send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                        pass
+                        break
 
                 # if messaging_event.get("message"):
                 #     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
@@ -81,12 +81,12 @@ def webhook():
                 #    send_message(sender_id, "http://www.telegraph.co.uk/news/0/us-election-2016-polls-and-odds-tracker-latest-donald-trump-and/")
 
                 pass
-                
+
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
-                if messaging_event.get("optin"):  # optin confirmation
-                    pass
+                # if messaging_event.get("optin"):  # optin confirmation
+                #     pass
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
                     pass
