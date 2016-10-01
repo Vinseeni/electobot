@@ -35,21 +35,21 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]
-                    if message_text in {"trump","Trump","TRUMP"}:
+                    if message_text.lower() in {"trump","Trump","TRUMP"}:
                         send_message(sender_id, "seriously, trump???")
                         send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
-                    elif message_text in {"hillary","Hillary","HILLARY","hilary", "Hilary","HILARY"}:
+                    elif message_text.lower() in {"hillary","Hillary","HILLARY","hilary", "Hilary","HILARY"}:
                         send_message(sender_id, "Hillary isnt too bad ")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                    elif message_text in {"undecided","not sure"}:
+                    elif message_text.lower() in {"undecided","not sure"}:
                         send_message(sender_id, "then trust me and vote hillary")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                    elif message_text  in {"Hi", "hi", "HI","Hey","HEY","hey","hello","HELLO","Hello"} :
+                    elif message_text.lower()  in {"Hi", "hi", "HI","Hey","HEY","hey","hello","HELLO","Hello"} :
                         send_message(sender_id, "Wassup! Ready for election news? trump, hillary or undecided?")
-                    # else:
-                    #     send_message(sender_id, "Hey, wanna read another cool article?")
-                    #     send_message(send_id, "http://www.independent.co.uk/news/world/americas/us-elections/usa-today-breaks-non-endorsement-tradition-by-saying-donald-trump-is-unfit-for-the-presidency-a7339226.html")
-        
+                    else:
+                        send_message(sender_id, "Hey, wanna read another cool article?")
+                        send_message(send_id, "http://www.independent.co.uk/news/world/americas/us-elections/usa-today-breaks-non-endorsement-tradition-by-saying-donald-trump-is-unfit-for-the-presidency-a7339226.html")
+                        break
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
