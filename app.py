@@ -45,7 +45,7 @@ def webhook():
                         send_message(sender_id, "Then trust me and vote hillary! Here's the latest news about hillary")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                     else :
-                        send_message(sender_id, "Wassup! I've got election news just for you! Who is your pick: trump, hillary or undecided?")
+                        send_message(sender_id, "Wassup! I've got election news just for you! Who is your pick: Trump, Hillary or Undecided?")
                     # else:
                     #     send_message(sender_id, "Hey, wanna read another cool article?")
                     #     send_message(send_id, "http://www.independent.co.uk/news/world/americas/us-elections/usa-today-breaks-non-endorsement-tradition-by-saying-donald-trump-is-unfit-for-the-presidency-a7339226.html")
