@@ -46,9 +46,9 @@ def webhook():
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                     elif message_text  in {"Hi", "hi", "HI","Hey","HEY","hey","hello","HELLO","Hello"} :
                         send_message(sender_id, "Wassup! Ready for election news? trump, hillary or undecided?")
-                    else:
-                        send_message(sender_id, "Hey, wanna read another cool article?")
-                        send_message(send_id, "http://www.independent.co.uk/news/world/americas/us-elections/usa-today-breaks-non-endorsement-tradition-by-saying-donald-trump-is-unfit-for-the-presidency-a7339226.html")
+                    # else:
+                    #     send_message(sender_id, "Hey, wanna read another cool article?")
+                    #     send_message(send_id, "http://www.independent.co.uk/news/world/americas/us-elections/usa-today-breaks-non-endorsement-tradition-by-saying-donald-trump-is-unfit-for-the-presidency-a7339226.html")
         
 
                 if messaging_event.get("delivery"):  # delivery confirmation
