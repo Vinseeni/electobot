@@ -35,7 +35,7 @@ def webhook():
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]
                     if message_text == "trump" or "Trump" or "TRUMP":
-                        send_message(sender_id, "")
+                        send_message(sender_id, "seriously, trump???")
                         send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
                         break
                     elif message_text == "hillary" or "Hillary" or "HILLARY" or "hilary" or "Hilary" or "HILARY":
