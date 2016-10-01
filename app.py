@@ -38,10 +38,10 @@ def webhook():
                     if "trump" in message_text.lower():
                         send_message(sender_id, "seriously, trump???")
                         send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
-                    elif message_text.lower() in {"hillary","Hillary","HILLARY","hilary", "Hilary","HILARY"}:
+                    elif "hillary" in message_text.lower():
                         send_message(sender_id, "Hillary isnt too bad ")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                    elif message_text.lower() in {"undecided","not sure"}:
+                    elif "undecided" in message_text.lower():
                         send_message(sender_id, "then trust me and vote hillary")
                         send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                     else :
