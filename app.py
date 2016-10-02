@@ -8,26 +8,26 @@ app = Flask(__name__)
 
 newsList = []
 
-def findArticles():
-    statusError =True
-    while statusError ==True:
-        r = requests.get('https://access.alchemyapi.com/calls/data/GetNews?apikey=519c0474356c6d4f16dfeffaae8a1e652aa03131&start=1474761600&end=1475452799&outputMode=json&count=3&q.enriched.url.title=A[trump^elections]&return=enriched.url.url,enriched.url.title&dedup=1')
-        parsed_json = json.loads(r.text)
-        if parsed_json['status'] =='OK':
-            statusError==False  
-            # print parsed_json
-            for entry in parsed_json['result']['docs']:
-                cleanedTitle = entry['source']['enriched']['url']['cleanedTitle']
-                newsList.append(cleanedTitle)
-                articleURL= entry['source']['enriched']['url']['url']
-                newsList.append(articleURL)
-                # print '\n'
-            break;
+# def findArticles():
+#     statusError =True
+#     while statusError ==True:
+#         r = requests.get('https://access.alchemyapi.com/calls/data/GetNews?apikey=519c0474356c6d4f16dfeffaae8a1e652aa03131&start=1474761600&end=1475452799&outputMode=json&count=3&q.enriched.url.title=A[trump^elections]&return=enriched.url.url,enriched.url.title&dedup=1')
+#         parsed_json = json.loads(r.text)
+#         if parsed_json['status'] =='OK':
+#             statusError==False  
+#             # print parsed_json
+#             for entry in parsed_json['result']['docs']:
+#                 cleanedTitle = entry['source']['enriched']['url']['cleanedTitle']
+#                 newsList.append(cleanedTitle)
+#                 articleURL= entry['source']['enriched']['url']['url']
+#                 newsList.append(articleURL)
+#                 # print '\n'
+#             break;
 
 
 
-findArticles()
-counter = 0
+# findArticles()
+# counter = 0
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -57,22 +57,17 @@ def webhook():
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     message_text = messaging_event["message"]["text"]
-                    # if "trump" in message_text.lower():
-                    #     send_message(sender_id, "seriously, trump???")
-                    #     send_message(sender_id, "http://www.nytimes.com/2016/10/02/magazine/how-donald-trump-set-off-a-civil-war-within-the-right-wing-media.html")
-                    # elif "hillary" in message_text.lower():
-                    #     send_message(sender_id, "Hillary isnt too bad to be honest ")
-                    #     send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                    # elif "undecided" in message_text.lower():
-                    #     send_message(sender_id, "Then trust me and vote hillary! Here's the latest news about hillary")
-                    #     send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                    # else :
-                    #     send_message(sender_id, "Wassup! I've got election news just for you! Who is your pick: Trump, Hillary or Undecided?")
-                    if "more" in message_text.lower():
-                        counter+=2
-                        send_message(sender_id,"More News:" +newsList[counter])
-                        send_message(sender_id,newsList[counter+1])
-
+                    if "trump" in message_text.lower():
+                        send_message(sender_id, "seriously, trump???")
+                        send_message(sender_id, "http://www.dailynews.co.tz/index.php/features/54059-who-is-to-blame-if-trump-triumphs-in-us-elections")
+                    elif "hillary" in message_text.lower():
+                        send_message(sender_id, "Here's some news on Hillary Clinton")
+                        send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
+                    elif "undecided" in message_text.lower():
+                        send_message(sender_id, "Then trust me and vote Hillary! Kidding, here's some news")
+                        send_message(sender_id, "http://www.dailynews.co.tz/index.php/features/54059-who-is-to-blame-if-trump-triumphs-in-us-elections")
+                    else :
+                        send_message(sender_id, "Hey there! I've got election news just for you! Who is your pick: Trump, Hillary or Undecided?")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
