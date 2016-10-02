@@ -8,26 +8,26 @@ app = Flask(__name__)
 
 newsList = []
 
-# def findArticles():
-#     statusError =True
-#     while statusError ==True:
-#         r = requests.get('https://access.alchemyapi.com/calls/data/GetNews?apikey=519c0474356c6d4f16dfeffaae8a1e652aa03131&start=1474761600&end=1475452799&outputMode=json&count=3&q.enriched.url.title=A[trump^elections]&return=enriched.url.url,enriched.url.title&dedup=1')
-#         parsed_json = json.loads(r.text)
-#         if parsed_json['status'] =='OK':
-#             statusError==False  
-#             # print parsed_json
-#             for entry in parsed_json['result']['docs']:
-#                 cleanedTitle = entry['source']['enriched']['url']['cleanedTitle']
-#                 newsList.append(cleanedTitle)
-#                 articleURL= entry['source']['enriched']['url']['url']
-#                 newsList.append(articleURL)
-#                 # print '\n'
-#             break;
+def findArticles():
+    statusError =True
+    while statusError ==True:
+        r = requests.get('https://access.alchemyapi.com/calls/data/GetNews?apikey=519c0474356c6d4f16dfeffaae8a1e652aa03131&start=1474761600&end=1475452799&outputMode=json&count=3&q.enriched.url.title=A[trump^elections]&return=enriched.url.url,enriched.url.title&dedup=1')
+        parsed_json = json.loads(r.text)
+        if parsed_json['status'] =='OK':
+            statusError==False  
+            # print parsed_json
+            for entry in parsed_json['result']['docs']:
+                cleanedTitle = entry['source']['enriched']['url']['cleanedTitle']
+                newsList.append(cleanedTitle)
+                articleURL= entry['source']['enriched']['url']['url']
+                newsList.append(articleURL)
+                # print '\n'
+            break;
 
 
 
-# findArticles()
-# counter = 0
+findArticles()
+counter = 0
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -69,8 +69,9 @@ def webhook():
                     # else :
                     #     send_message(sender_id, "Wassup! I've got election news just for you! Who is your pick: Trump, Hillary or Undecided?")
                     if "more" in message_text.lower():
-                        send_message(sender_id,"More News:" )
-                        # send_message(sender_id,newsList[counter+1])
+                        counter+=2
+                        send_message(sender_id,"More News:" +newsList[counter])
+                        send_message(sender_id,newsList[counter+1])
 
 
                 if messaging_event.get("delivery"):  # delivery confirmation
