@@ -70,8 +70,8 @@ def webhook():
                     #     send_message(sender_id, "Wassup! I've got election news just for you! Who is your pick: Trump, Hillary or Undecided?")
                     if "more" in message_text.lower():
                         counter+=2
-                        send_message(sender_id,"More News:" + newsList[counter])
-                        send_message(sender_id,newsList[counter+1])
+                        send_message(sender_id,"More News:" )
+                        # send_message(sender_id,newsList[counter+1])
 
 
                 if messaging_event.get("delivery"):  # delivery confirmation
