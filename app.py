@@ -53,30 +53,34 @@ def webhook():
     if data["object"] == "page":
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
-                if messaging_event.get("message"):  # someone sent us a message
-                    sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                    recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    message_text = messaging_event["message"]["text"]
-                    if "trump" in message_text.lower():
-                        send_message(sender_id, "seriously, trump???")
-                        send_message(sender_id, "http://www.dailynews.co.tz/index.php/features/54059-who-is-to-blame-if-trump-triumphs-in-us-elections")
-                    elif "hillary" in message_text.lower():
-                        send_message(sender_id, "Here's some news on Hillary Clinton")
-                        send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
-                    elif "undecided" in message_text.lower():
-                        send_message(sender_id, "Then trust me and vote Hillary! Kidding, here's some news")
-                        send_message(sender_id, "http://www.dailynews.co.tz/index.php/features/54059-who-is-to-blame-if-trump-triumphs-in-us-elections")
-                    else :
-                        send_message(sender_id, "Hey there! I've got election news just for you! Who is your pick: Trump, Hillary or Undecided?")
+                    if messaging_event.get("message"):  # someone sent us a message
+                        sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                        recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+                        message_text = messaging_event["message"]["text"]
+                       with open('articledata.csv','rb') as csvfile:
+                            articlereader = csv.reader(csvfile)
+                            rows = list(articlereader)
+                    
+                            if "trump" in message_text.lower():
+                                send_message(sender_id, "seriously, trump???")
+                                send_message(sender_id, rows[0][1])
+                            elif "hillary" in message_text.lower():
+                                send_message(sender_id, "Here's some news on Hillary Clinton")
+                                send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
+                            elif "undecided" in message_text.lower():
+                                send_message(sender_id, "Then trust me and vote Hillary! Kidding, here's some news")
+                                send_message(sender_id, "http://www.dailynews.co.tz/index.php/features/54059-who-is-to-blame-if-trump-triumphs-in-us-elections")
+                            else :
+                                send_message(sender_id, "Hey there! I've got election news just for you! Who is your pick: Trump, Hillary or Undecided?")
 
-                if messaging_event.get("delivery"):  # delivery confirmation
-                    pass
+                    if messaging_event.get("delivery"):  # delivery confirmation
+                        pass
 
-                if messaging_event.get("optin"):  # optin confirmation
-                    pass
+                    if messaging_event.get("optin"):  # optin confirmation
+                        pass
 
-                if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    pass
+                    if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
+                        pass
             
 
     return "ok", 200
