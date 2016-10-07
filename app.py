@@ -58,19 +58,23 @@ def webhook():
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         message_text = messaging_event["message"]["text"]
-                        with open('articledata.csv','rb') as csvfile:
+                        with open('articledata.csv','wb') as csvfile:
                             articlereader = csv.reader(csvfile)
+                            articlewriter = csv.writer(csvfile)
                             rows = list(articlereader)
-                    
                             if "trump" in message_text.lower():
                                 send_message(sender_id, "seriously, trump???")
-                                send_message(sender_id, rows[0][1])
+                                send_message(sender_id, rows[0][3])
                             elif "hillary" in message_text.lower():
                                 send_message(sender_id, "Here's some news on Hillary Clinton")
                                 send_message(sender_id, "http://www.latimes.com/nation/politics/trailguide/la-na-live-updates-trailguide-hillary-clinton-pounces-on-donald-1475266902-htmlstory.html")
                             elif "undecided" in message_text.lower():
                                 send_message(sender_id, "Then trust me and vote Hillary! Kidding, here's some news")
                                 send_message(sender_id, "http://www.dailynews.co.tz/index.php/features/54059-who-is-to-blame-if-trump-triumphs-in-us-elections")
+                            elif "more" in message_text.lower():
+                                counter = int(rows[0][0])
+                                send_message(sender_id, rows[counter][3])
+                                articlewriter.writerow()
                             else :
                                 send_message(sender_id, "Hey there! I've got election news just for you! Who is your pick: Trump, Hillary or Undecided?")
 
