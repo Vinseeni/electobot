@@ -1,0 +1,13 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\vinods>cd ..
+
+C:\Users>cd vinods
+
+C:\Users\vinods>cd Documents
+
+C:\Users\vinods\Documents>cd fb-messenger-bot-master
+
+C:\Users\vinods\Documents\fb-messenger-bot-master>heroku config | grep CLEARDB_DATABASE_URL
+CLEARDB_DATABASE_URL: mysql://b7a6eb38f4feca:360fda24@us-cdbr-iron-east-04.cleardb.net/heroku_8184df1283e35f6?reconnect=true
